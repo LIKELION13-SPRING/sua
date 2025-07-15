@@ -1,7 +1,28 @@
 spring:
+  application:
+    name: #자기 블로그 이름
+  datasource:
+    url: jdbc:h2:mem:test
+    driver-class-name: org.h2.Driver
+    username:
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
   jpa:
-    show-sql: true
+    hibernate:
+      ddl-auto: update  # JPA가 테이블을 먼저 생성
+    defer-datasource-initialization: true  # data.sql 실행을 JPA 이후로 지연
     properties:
       hibernate:
         format_sql: true
-    defer-datasource-initialization: true
+        show_sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
