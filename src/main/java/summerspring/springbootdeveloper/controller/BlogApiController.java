@@ -8,6 +8,7 @@ import summerspring.springbootdeveloper.Getmapping;
 import summerspring.springbootdeveloper.domain.Article;
 import summerspring.springbootdeveloper.dto.AddArticleRequest;
 import summerspring.springbootdeveloper.dto.ArticleResponse;
+import summerspring.springbootdeveloper.dto.UpdateArticleRequest;
 import summerspring.springbootdeveloper.service.BlogService;
 
 import java.util.List;
@@ -42,5 +43,18 @@ public class BlogApiController {
 
         return ResponseEntity.ok()
                 .body(new ArticleResponse(article));
+    }
+
+    @DeleteMapping("/api/articles/{id}")
+    public ResponseEntity<Void> deleteArticle(@PathVariable long id) {
+        blogService.delete(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/api/articles/{id}")
+    public ResponseEntity<Article> updateArticle(@PathVariable long id,
+                                                              @RequestBody UpdateArticleRequest request) {
+        Article updatedArticle = blogService.update(id, request);
+        return ResponseEntity.ok().body(updatedArticle);
     }
 }
