@@ -17,6 +17,10 @@ import java.util.List;
 @Getter
 @Entity
 public class User implements UserDetails {
+/*스프링 시큐리티가 제공하는 인터페이스. 사용자의 인증 정보를 담아둔다
+스프링 시큐리티는 로그인 시 UserDetailService를 사용해서 사용자 정보를 가져오는데,
+이 정보는 반드시 UserDeatils 타입이어야 함.
+반드시 밑의 메서드들을 Override(재정의) 해야 함: 인터페이스에는 메서드 정의만 있고 구현이 없기 때문에 */
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -14,10 +14,11 @@ public class UserService {
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    // 회원가입 후 정보 신규 저장 메서드
     public Long save(AddUserRequest dto) {
         return userRepository.save(User.builder()
                 .email(dto.getEmail())
-                .password(bCryptPasswordEncoder.encode(dto.getPassword()))
+                .password(bCryptPasswordEncoder.encode(dto.getPassword())) //패스워드 암호화
                 .build()).getId();
     }
 }
