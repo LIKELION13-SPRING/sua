@@ -7,12 +7,12 @@ plugins {
 group = 'summerspring'
 version = '0.0.1-SNAPSHOT'
 
+
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(17)
 	}
 }
-
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -35,6 +35,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
 	testImplementation 'org.springframework.security:spring-security-test'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.projectlombok:lombok'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'javax.xml.bind:jaxb-api:2.3.1'
 }
 
 tasks.named('test') {
